@@ -19,7 +19,7 @@ interface ContactFormData {
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
@@ -29,19 +29,19 @@ const ContactForm = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    
+
     try {
       // DIRECTLY USE YOUR EMAILJS CREDENTIALS
       const serviceId = "service_038ydok";
       const templateId = "template_aegw18o";
       const publicKey = "WrHslXSqZSUWwAu6Y";
-      
+
       if (!serviceId || !templateId || !publicKey) {
         throw new Error("EmailJS configuration is missing.");
       }
-      
+
       console.log("Sending email with:", { serviceId, templateId, publicKey });
-      
+
       // Prepare template parameters for EmailJS
       const templateParams = {
         from_name: data.name,
@@ -57,7 +57,7 @@ const ContactForm = () => {
         date: new Date().toLocaleDateString(),
         time: new Date().toLocaleTimeString(),
       };
-      
+
       // Send email via EmailJS
       const response = await emailjs.send(
         serviceId,
@@ -65,14 +65,14 @@ const ContactForm = () => {
         templateParams,
         publicKey
       );
-      
+
       console.log("Email sent successfully:", response);
-      
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       reset();
       toast.success("Message sent successfully!");
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false);
@@ -80,17 +80,17 @@ const ContactForm = () => {
     } catch (error: any) {
       console.error("Form submission error:", error);
       setIsSubmitting(false);
-      
+
       let errorMessage = "Failed to send message. Please try again later.";
-      
+
       if (error.text) {
         errorMessage = `EmailJS Error: ${error.text}`;
       } else if (error.message) {
         errorMessage = error.message;
       }
-      
+
       toast.error(errorMessage);
-      
+
       // Fallback: Direct email link
       setTimeout(() => {
         const mailtoLink = `mailto:contacttechexa@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || 'Not provided'}\n\nMessage:\n${data.message}`)}`;
@@ -117,7 +117,7 @@ const ContactForm = () => {
           </p>
         </div>
       ) : (
-        <form 
+        <form
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-6"
         >
@@ -147,7 +147,7 @@ const ContactForm = () => {
 
             {/* Email Field */}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-normal text-foreground">
+              <Label htmlFor="email" className="text-sm font-medium font-clash text-foreground">
                 Email Address <span className="text-destructive">*</span>
               </Label>
               <Input
@@ -172,7 +172,7 @@ const ContactForm = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {/* Phone Field */}
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-sm font-normal text-foreground">
+              <Label htmlFor="phone" className="text-sm font-medium font-clash text-foreground">
                 Phone Number
               </Label>
               <Input
@@ -186,7 +186,7 @@ const ContactForm = () => {
 
             {/* Subject Field */}
             <div className="space-y-2">
-              <Label htmlFor="subject" className="text-sm font-normal text-foreground">
+              <Label htmlFor="subject" className="text-sm font-medium font-clash text-foreground">
                 Subject <span className="text-destructive">*</span>
               </Label>
               <Input
@@ -206,7 +206,7 @@ const ContactForm = () => {
 
           {/* Message Field */}
           <div className="space-y-2">
-            <Label htmlFor="message" className="text-sm font-normal text-foreground">
+            <Label htmlFor="message" className="text-sm font-medium font-clash text-foreground">
               Message <span className="text-destructive">*</span>
             </Label>
             <Textarea
@@ -232,7 +232,7 @@ const ContactForm = () => {
             type="submit"
             variant="hero"
             size="xl"
-            className="w-full md:w-auto"
+            className="w-full md:w-auto font-clash font-semibold"
             disabled={isSubmitting}
           >
             {isSubmitting ? (

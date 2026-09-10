@@ -1,67 +1,72 @@
 import { ArrowUpRight, ExternalLink, Code, Hospital, Palette, ShoppingCart, TrendingUp, X } from "lucide-react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useServiceFilter } from "@/contexts/ServiceFilterContext";
+import { useSectionReveal } from "@/hooks/use-section-reveal";
 
 const projects = [
   {
     title: "The Perfume World",
     category: " E-Commerce",
     description: "Scalable e-commerce solution with modern UX",
-    image: "https://i.postimg.cc/gjt2YFcg/Gemini-Generated-Image-dkzrindkzrindkzr.png",
+    image: "https://i.postimg.cc/PJYSJWnR/Gemini-Generated-Image-4tghjs4tghjs4tgh-(1).png",
     icon: ShoppingCart,
     color: "green",
     tags: ["Shopify", "React", "Payment"],
-    live:"https://www.theperfumeworld.co.uk",
+  },
+   {
+    title: "Human Resource Management",
+    category: "HRM",
+    description: "organizing, coordinating, and managing a company's employees. ",
+    image: "https://i.postimg.cc/nVTLC60b/Gemini-Generated-Image-n0olqan0olqan0ol.png",
+    icon:Code,
+    color: "green",
+    tags: ["Laravel", "React", "PHP"],
   },
   {
     title: "Web Spark Builder",
     category: "Web Application",
     description: "Create Your Website With Ai",
-    image: "https://i.postimg.cc/htLRsRFL/Gemini-Generated-Image-kr76qwkr76qwkr76.png",
+    image: "https://i.postimg.cc/yNkZ67FV/Chat-GPT-Image-Apr-22-2026-01-42-33-PM.png",
     icon:Code,
     color: "pink",
     tags: ["React.js", "PHP", "Laravel","My-Sql"],
-    live:"https://www.websparkbuilders.com",
   },
   {
     title: "NOMO",
     category: "Shoping",
     description: "Scalable Ring shoping Store for Android & IOS with modern UI/UX",
-    image: "https://i.postimg.cc/KcrR34Xg/ring-app-mockup-(Community)-2.png",
+    image: "https://i.postimg.cc/850XFX6M/gold.png",
     icon: Code,
     color: "green",
     tags: ["Flutter", "Figma", "Payment"],
-    
   },
-  {
-    title: "Human Resource Management",
-    category: "HRM",
-    description: "organizing, coordinating, and managing a company's employees. ",
-    image: "https://i.postimg.cc/vHwPzgGv/Gemini-Generated-Image-rn0ps4rn0ps4rn0p.png",
-    icon:Code,
-    color: "green",
-    tags: ["Laravel", "React", "PHP"],
-    live:"https://hrm.thefanservices.co.uk/",
-  },
+ 
   {
     title: "Mayfair Care Agency",
     category: "Care Agency",
     description: "we deliver elderly care, end of life care, and palliative care",
-    image: "https://i.postimg.cc/J0XRWygC/Gemini-Generated-Image-t4u020t4u020t4u0.png",
+    image: "https://i.postimg.cc/2yJxDm8m/Gemini-Generated-Image-a8zbv9a8zbv9a8zb.png",
     icon: Hospital,
     color: "green",
     tags: ["Shopify", "React", "Payment"],
-    live:"https://www.mayfaircareagency.co.uk/",
   },
   {
     title: "Lady Bosom",
     category: "Shoping",
-    description: "We provide high-quality breast support products, body tape solutions, and intimate wear designed for comfort, confidence, and style.",
-    image: "https://i.postimg.cc/L6rtHfkZ/Gemini-Generated-Image-ke5mepke5mepke5m.png",
+    description: "We provide high-quality breast support products, body tape solutions.",
+    image: "https://i.postimg.cc/RZvBtzLw/Gemini-Generated-Image-hxhrfuhxhrfuhxhr.png",
     icon: ShoppingCart,
     color: "green",
     tags: ["Shopify", "Payment"],
-    live:"https://ladybosom.com/",
+  },
+  {
+    title: "Q & P Furniture",
+    category: "E-Commerce",
+    description: "Modern Furniture Store",
+    image: "https://i.postimg.cc/NF5zmBN1/Gemini-Generated-Image-rvty0yrvty0yrvty.png",
+    icon: ShoppingCart,
+    color: "green",
+    tags: ["Shopify", "React", "Payment"],
   },
   {
     title: "Hungry Tails",
@@ -71,10 +76,7 @@ const projects = [
     icon: ShoppingCart,
     color: "violet",
     tags: ["Shopify", "Payment"],
-    live:"https://hungrytails.co.uk/?srsltid=AfmBOoqur4qVJqNSBacE9E0IZyouHFR53SHDC_mSW7vHi2fB9AJLVCRU",
   },
-
-
   
   {
     title: "Patty Buns",
@@ -84,18 +86,8 @@ const projects = [
     icon: Palette,
     color: "green",
     tags: ["Photoshop", "Canva", "Illustrator"],
-    live:"https://pattybunswarsop.co.uk/",
   },
-  {
-    title: "Q & P Furniture",
-    category: "E-Commerce",
-    description: "Modern Furniture Store",
-    image: "https://i.postimg.cc/J4Gm3K23/Q-P-Furniture.png",
-    icon: ShoppingCart,
-    color: "green",
-    tags: ["Shopify", "React", "Payment"],
-    live:"https://www.qpfs.co.uk/",
-  },
+  
   {
     title: "Hungry Tails",
     category: "E-Commerce",
@@ -104,9 +96,7 @@ const projects = [
     icon: Palette,
     color: "green",
     tags: ["Photoshop", "Canva", "Illustrator"],
-    live:"https://hungrytails.co.uk/?srsltid=AfmBOoqxWTNOwAUmRQ_bFBxkDUDKhdqdL5bFelgQAK2IObGcsZ4MJFno/",
   },
-  
 ];
 
 const colorClasses = {
@@ -156,6 +146,7 @@ const serviceToFilter: Record<string, (project: typeof projects[0]) => boolean> 
 const Work = () => {
   const { selectedService, clearFilter } = useServiceFilter();
   const [visibleProjects, setVisibleProjects] = useState(6);
+  const sectionRef = useRef<HTMLElement>(null);
 
   // Filter projects based on selected service
   const filteredProjects = useMemo(() => {
@@ -177,26 +168,29 @@ const Work = () => {
   const projectsToShow = filteredProjects.slice(0, visibleProjects);
   const hasMore = filteredProjects.length > visibleProjects;
 
+  useSectionReveal(sectionRef, {}, [projectsToShow.length, selectedService]);
+
   const handleViewMore = () => {
-    setVisibleProjects(prev => prev + 3); // Show 3 more projects
+    setVisibleProjects(prev => prev + 3);
   };
 
   return (
-    <section id="work" className="py-20 relative overflow-hidden bg-white">
+    <section ref={sectionRef} id="work" className="py-16 md:py-24 relative overflow-hidden bg-white">
       {/* Minimal Background - Reduced size */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-primary/3 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-primary/3 rounded-full blur-3xl" />
+      <div data-parallax="60" className="absolute top-0 right-0 w-[300px] h-[300px] bg-primary/3 rounded-full blur-3xl" />
+      <div data-parallax="45" className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-primary/3 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header - Reduced spacing */}
-        <div className="mb-12">
+        <div data-reveal className="mb-12">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex-1">
               <span className="text-primary font-normal text-xs tracking-wider uppercase mb-2 block font-light">
                 Our Work
               </span>
-              <h2 className=" font-bold font-display text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 tracking-tight">
-                Featured <span className="text-gradient font-bold">Projects</span>
+              {/* Fixed: Added proper Clash Display font classes */}
+              <h2 className="font-clash-display text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 tracking-tight">
+                Featured <span className="text-gradient font-clash-display font-semibold">Projects</span>
               </h2>
               <p className="text-muted-foreground text-sm md:text-base font-light leading-relaxed mb-8">
                 {selectedService 
@@ -234,11 +228,8 @@ const Work = () => {
             {projectsToShow.map((project, index) => {
             const colors = colorClasses[project.color as keyof typeof colorClasses];
             return (
-              <a
+              <div
                 key={project.title}
-                href={project.live || "#"}
-                target={project.live ? "_blank" : undefined}
-                rel={project.live ? "noopener noreferrer" : undefined}
                 className="group relative block"
               >
                 <div className={`relative rounded-xl overflow-hidden border ${colors.border} ${colors.hover} transition-all duration-500 hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm`}>
@@ -271,7 +262,8 @@ const Work = () => {
                         <div className={`inline-block px-2 py-0.5 rounded ${colors.bg} mb-1.5`}>
                           <span className={`text-xs font-medium ${colors.text}`}>{project.category}</span>
                         </div>
-                        <h3 className="font-display text-lg md:text-xl font-semibold mb-1.5 group-hover:text-black transition-all duration-300">
+                        {/* Fixed: Added Clash Display font to project title */}
+                        <h3 className="font-clash-display text-lg md:text-xl font-medium mb-1.5 group-hover:text-black transition-all duration-300">
                           {project.title}
                         </h3>
                         <p className="text-muted-foreground text-xs font-light leading-relaxed mb-3 line-clamp-2">
@@ -291,17 +283,9 @@ const Work = () => {
                         </span>
                       ))}
                     </div>
-
-                    {/* View Project Link */}
-                    {project.live && (
-                      <div className="flex items-center gap-1.5 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-xs font-medium">View project</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </div>
-                    )}
                   </div>
                 </div>
-              </a>
+              </div>
             );
           })}
           </div>
@@ -309,7 +293,7 @@ const Work = () => {
 
         {/* CTA - View More Button */}
         {hasMore && (
-          <div className="text-center mt-10">
+          <div data-reveal className="text-center mt-10">
             <button
               onClick={handleViewMore}
               className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors group text-xs font-light cursor-pointer"

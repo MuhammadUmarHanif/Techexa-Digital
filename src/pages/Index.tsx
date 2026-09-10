@@ -1,12 +1,22 @@
+import { Suspense, lazy } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Work from "@/components/Work";
-import About from "@/components/About";
-import Team from "@/components/Team";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 import { ServiceFilterProvider } from "@/contexts/ServiceFilterContext";
+
+// Lazy load below-the-fold components
+const Services = lazy(() => import("@/components/Services"));
+const Work = lazy(() => import("@/components/Work"));
+const About = lazy(() => import("@/components/About"));
+const Team = lazy(() => import("@/components/Team"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+// Simple loading state for lazy components
+const SectionLoader = () => (
+  <div className="w-full h-48 flex items-center justify-center bg-background/50 animate-pulse">
+    <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+  </div>
+);
 
 const Index = () => {
   return (
@@ -14,12 +24,14 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
         <Hero />
-        <Services />
-        <Work />
-        <About />
-        <Team />
-        <Contact />
-        <Footer />
+        <Suspense fallback={<SectionLoader />}>
+          <Services />
+          <Work />
+          <About />
+          <Team />
+          <Contact />
+          <Footer />
+        </Suspense>
       </div>
     </ServiceFilterProvider>
   );

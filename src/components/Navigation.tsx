@@ -1,106 +1,119 @@
-import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { gsap } from "@/lib/gsap";
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+  const lastScrollY = useRef(0);
+  const navRef = useRef<HTMLElement>(null);
+
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    const section = document.getElementById("contact");
+    if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const current = window.scrollY;
+
+      if (current < 50) {
+        setIsVisible(true);
+      } else if (current > lastScrollY.current) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = current;
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "About", href: "#about" },
-    { name: "Team", href: "#team" },
-    { name: "Contact", href: "#contact" },
-  ];
+  useEffect(() => {
+    if (!navRef.current) return;
+
+    gsap.to(navRef.current, {
+      y: isVisible ? 0 : -120,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  }, [isVisible]);
+
+  useLayoutEffect(() => {
+    if (!navRef.current) return;
+
+    gsap.fromTo(
+      navRef.current,
+      { y: -120, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.8 }
+    );
+  }, []);
+
+  const navLinks = ["Home", "Services", "Work", "About", "Team", "Contact"];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "py-4 bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-sm" 
-          : "py-5 bg-transparent"
-      }`}
+      ref={navRef}
+      className="fixed top-4 left-0 right-0 w-[97%] mx-auto px-2 sm:px-2 z-50"
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a 
-          href="#" 
-          className="font-display text-xl md:text-2xl font-semibold text-gray-900 tracking-tight hover:opacity-80 transition-opacity flex items-center gap-2"
-        >
-          <img 
-            src="/logo.png" 
-            alt="Techexa Logo" 
-            className="w-10 h-10 md:w-12 md:h-12 object-contain"
-          />
-          TECHEXA<span className="text-blue-600">.</span>
-        </a>
+      <div className="bg-white/90 backdrop-blur-xl border border-gray-200 shadow-md rounded-xl px-6 py-4 flex items-center justify-between">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 font-semibold text-lg">
+          <img src="/logo.png" className="w-8 h-8" />
+          TECHEXA
+        </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.name}
-              href={link.href}
-              className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm font-medium relative group"
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="text-sm text-gray-600 hover:text-black transition"
             >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-blue-600" />
+              {link}
             </a>
           ))}
-        <Button
-        onClick={scrollToContact}
-        className="ml-4 px-6 py-5 text-base font-medium bg-gradient-to-r from-[#385C97] to-blue-500 hover:from-[#2a4573] hover:to-[#385C97] text-white border-0 shadow-md shadow-blue-200 hover:shadow-lg hover:shadow-[#385C97]/30 transition-all duration-300">
-  Become A Partner
-</Button>
+
+          <Button
+            onClick={scrollToContact}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm shadow"
+          >
+            Start a Project
+          </Button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile */}
         <button
-          className="md:hidden text-gray-700 p-2.5 rounded-lg hover:bg-gray-100 transition-colors"
+          className="md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-4 mx-6 p-6 rounded-xl bg-white/95 backdrop-blur-xl border border-gray-200 animate-fade-in shadow-lg">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-gray-900 hover:text-blue-600 transition-colors duration-200 text-base font-medium py-2 border-b border-gray-100 last:border-b-0"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-            <Button className="mt-4 py-5 text-base font-medium bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white border-0 shadow-md shadow-blue-200 hover:shadow-blue-300" onClick={() => setIsMobileMenuOpen(false)}>
-              Start Project
-            </Button>
-          </div>
+        <div className="md:hidden mt-3 bg-white border rounded-xl p-4 shadow">
+          {navLinks.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="block py-2 text-gray-700"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link}
+            </a>
+          ))}
         </div>
       )}
     </nav>

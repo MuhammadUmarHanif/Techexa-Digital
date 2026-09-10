@@ -1,17 +1,23 @@
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { useRef } from "react";
 import ContactForm from "./ContactForm";
+import { useSectionReveal } from "@/hooks/use-section-reveal";
 
 const Contact = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useSectionReveal(sectionRef);
+
   return (
-    <section id="contact" className="py-24 relative overflow-hidden  bg-white">
+    <section ref={sectionRef} id="contact" className="py-16 md:py-24 relative overflow-hidden  bg-white">
       {/* Minimal Background */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
+      <div data-parallax="65" className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-3xl" />
+      <div data-parallax="48" className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div data-reveal className="text-center mb-12">
             <span className="text-primary font-normal text-xs tracking-wider uppercase mb-3 block font-light">
               Get In Touch
             </span>
@@ -47,6 +53,7 @@ const Contact = () => {
                 ].map((item) => (
                   <div
                     key={item.label}
+                    data-reveal
                     className="group p-4 rounded-xl bg-card/50 border border-border/30 hover:border-primary/40 transition-all duration-300 backdrop-blur-sm"
                   >
                     <div className="flex items-start gap-3">
@@ -55,7 +62,7 @@ const Contact = () => {
                       </div>
                       <div className="flex-1">
                         <p className="text-muted-foreground text-xs mb-1 font-light">{item.label}</p>
-                        <p className="text-foreground text-sm font-medium">{item.value}</p>
+                        <p className="text-foreground text-sm font-medium font-clash">{item.value}</p>
                       </div>
                     </div>
                   </div>
@@ -63,7 +70,7 @@ const Contact = () => {
               </div>
 
               {/* Response Time Card */}
-              <div className="p-4 rounded-xl bg-card/50 border border-border/30 backdrop-blur-sm">
+              {/* <div className="p-4 rounded-xl bg-card/50 border border-border/30 backdrop-blur-sm">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center flex-shrink-0">
                     <Clock className="w-4 h-4 text-primary" />
@@ -75,11 +82,11 @@ const Contact = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Right Side - Contact Form */}
-            <div className="lg:sticky lg:top-24 lg:h-fit">
+            <div data-reveal className="lg:sticky lg:top-24 lg:h-fit">
               <div className="p-6 rounded-2xl bg-card/50 border border-border/30 backdrop-blur-sm">
                 <div className="mb-6">
                   <h3 className="font-display text-xl font-semibold mb-2 tracking-tight">

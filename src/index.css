@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @layer base {
   :root {
     /* Light Theme - Enhanced */
@@ -63,12 +61,44 @@
 
 
 @font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
-  font-weight: 400 700;
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   * {
@@ -76,15 +106,16 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     letter-spacing: -0.01em;
   }
 
+  /* Fixed: Proper font family name and weights */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 400;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 300;
     letter-spacing: -0.02em;
   }
 
@@ -92,16 +123,25 @@
     font-weight: 300;
   }
 
-  .font-medium {
+  /* Fixed: Proper font weight classes */
+  .font-light {
+    font-weight: 300;
+  }
+
+  .font-normal {
     font-weight: 400;
   }
 
-  .font-semibold {
+  .font-medium {
     font-weight: 500;
   }
 
-  .font-bold {
+  .font-semibold {
     font-weight: 600;
+  }
+
+  .font-bold {
+    font-weight: 700;
   }
 }
 
@@ -142,6 +182,10 @@
   .animate-fade-in {
     animation: fadeIn 1s ease-out forwards;
   }
+
+  .animate-nav-drop {
+    animation: navDrop 0.7s ease-out forwards;
+  }
 }
 
 @keyframes float {
@@ -168,6 +212,17 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes gradientFloat {
