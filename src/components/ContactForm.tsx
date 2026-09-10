@@ -77,15 +77,19 @@ const ContactForm = () => {
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Form submission error:", error);
       setIsSubmitting(false);
 
       let errorMessage = "Failed to send message. Please try again later.";
 
-      if (error.text) {
-        errorMessage = `EmailJS Error: ${error.text}`;
-      } else if (error.message) {
+      const err = error as Record<string, unknown>;
+
+      if (typeof err?.text === 'string') {
+        errorMessage = `EmailJS Error: ${err.text}`;
+      } else if (typeof err?.message === 'string') {
+        errorMessage = err.message;
+      } else if (error instanceof Error) {
         errorMessage = error.message;
       }
 
