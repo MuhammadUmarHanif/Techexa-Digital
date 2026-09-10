@@ -53,32 +53,56 @@ const teamMembers = [
     //   { icon: FaGlobe, url: "https://balochcodes-dev.web.app/", label: "Portfolio", color: "#000000" },
     // ],
   },
+   
   {
-    name: "Umar Khalid",
-    role: "Shopify Expert",
-    image: "https://i.postimg.cc/B6wFQhD4/Gemini-Generated-Image-2wjq2o2wjq2o2wjq.png",
+    name: "Haroon Sharif",
+    role: "COO",
+    image: "https://i.postimg.cc/v8S11BKk/sir-haroon.png",
+    // socialLinks: [
+    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
+    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
+    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
+    // ],
+  },
+  {
+    name: "Mamoon Sharif",
+    role: "CTO",
+    image: "https://i.postimg.cc/2SLSL7vN/mamoon-sir(1)(1)(1).png",
+    // socialLinks: [
+    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
+    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
+    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
+    // ],
+  },
+  {
+    name: "Saman Khalid",
+    role: "Software Developer",
+    image: "https://i.postimg.cc/L89pkkGq/mypicture(1)(1).png",
+    // socialLinks: [
+    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
+    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
+    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
+    // ],
+  },
+  
+   {
+    name: "Nabeel Alam",
+    role: "UI/UX Designer",
+    image: "https://i.postimg.cc/KcQP0xW2/nebeeeel-sir.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/umarkhalid0034/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
     //   { icon: FaEnvelope, url: "mailto:umarkhalid@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
-  {
-    name: "Shamshad Ali",
-    role: "Graphic Designer",
-    image: "https://i.postimg.cc/FHVkp1LK/Gemini-Generated-Image-j5vwr6j5vwr6j5vw.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/shamshad-ali-majeedi", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/shamshadalimajeedi", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:shamshadali@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
+
+  
 ];
 
 const Team = () => {
   const [showAll, setShowAll] = useState(false);
   const sectionRef = useRef(null);
-  const displayedMembers = showAll ? teamMembers : teamMembers.slice(0, 8);
+  const displayedMembers = showAll ? teamMembers : teamMembers;
 
   useSectionReveal(sectionRef, {}, [displayedMembers.length]);
 
@@ -88,6 +112,7 @@ const Team = () => {
       key={member.name}
       data-reveal
       className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm will-change-transform"
+      
     >
       <img
         src={member.image}
@@ -129,7 +154,7 @@ const Team = () => {
   <div
     key="cta-card"
     data-reveal
-    className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm group hover:shadow-md transition-shadow duration-300 will-change-transform"
+    className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm group hover:shadow-md transition-shadow duration-300 will-change-transform"  
   >
     <div className="relative h-full min-h-[300px] sm:min-h-[350px] flex flex-col items-start justify-center p-6 text-left bg-gradient-to-br from-purple-50 via-white to-cyan-50">
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-cyan-500/5 to-transparent" />
@@ -159,7 +184,7 @@ const Team = () => {
   displayedMembers.forEach((member, idx) => {
     gridItems.push(renderMemberCard(member, idx));
     // After rendering Shamshad's card (the last one), add the CTA card
-    if (member.name === "Shamshad Ali") {
+    if (member.name === "Nabeel Alam") {
       gridItems.push(renderCtaCard());
     }
   });
@@ -192,9 +217,9 @@ const Team = () => {
           </p>
         </div>
 
-        {/* Team Grid with integrated CTA card */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
-          {gridItems}
+       {/* Team Grid with integrated CTA card */}
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 [&>*:nth-last-child(2)]:lg:col-start-2 [&>*:nth-last-child(1)]:lg:col-start-3">
+         {gridItems}
         </div>
       </div>
     </section>
