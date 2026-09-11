@@ -124,10 +124,10 @@ const About = () => {
                 <div className="flex items-center gap-3 mb-3">
                   <div className="flex -space-x-2">
                     {[
-                      "https://i.postimg.cc/MZDfp92P/Whats-App-Image-2026-01-02-at-11-17-56-AM.jpg",
-                      "https://i.postimg.cc/qqfwBQP7/team-8.png",
-                      "https://i.postimg.cc/jjfLYbrG/20251205-160110(1).jpg",
-                      "https://i.postimg.cc/FR8vrfgx/team-3.png"
+                      "/images/about/about-1.jpg",
+                      "/images/about/about-2.png",
+                      "/images/about/about-3.jpg",
+                      "/images/about/about-4.png"
                     ].map((src, i) => (
                       <img
                         key={i}
@@ -136,6 +136,12 @@ const About = () => {
                         className="w-9 h-9 rounded-full border-2 border-white shadow-sm object-cover 
                                    group-hover:scale-105 transition-transform duration-300"
                         style={{ transitionDelay: `${i * 50}ms` }}
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          target.onerror = null;
+                          target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="%233b82f6"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="system-ui, sans-serif" font-size="12" font-weight="600">${i + 1}</text></svg>`;
+                        }}
                       />
                     ))}
                   </div>

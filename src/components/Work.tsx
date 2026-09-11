@@ -8,7 +8,7 @@ const projects = [
     title: "The Perfume World",
     category: " E-Commerce",
     description: "Scalable e-commerce solution with modern UX",
-    image: "https://i.postimg.cc/PJYSJWnR/Gemini-Generated-Image-4tghjs4tghjs4tgh-(1).png",
+    image: "/images/projects/perfume-world.png",
     icon: ShoppingCart,
     color: "green",
     tags: ["Shopify", "React", "Payment"],
@@ -17,7 +17,7 @@ const projects = [
     title: "Human Resource Management",
     category: "HRM",
     description: "organizing, coordinating, and managing a company's employees. ",
-    image: "https://i.postimg.cc/nVTLC60b/Gemini-Generated-Image-n0olqan0olqan0ol.png",
+    image: "/images/projects/hrm.png",
     icon:Code,
     color: "green",
     tags: ["Laravel", "React", "PHP"],
@@ -26,7 +26,7 @@ const projects = [
     title: "Web Spark Builder",
     category: "Web Application",
     description: "Create Your Website With Ai",
-    image: "https://i.postimg.cc/yNkZ67FV/Chat-GPT-Image-Apr-22-2026-01-42-33-PM.png",
+    image: "/images/projects/web-spark.png",
     icon:Code,
     color: "pink",
     tags: ["React.js", "PHP", "Laravel","My-Sql"],
@@ -35,7 +35,7 @@ const projects = [
     title: "NOMO",
     category: "Shoping",
     description: "Scalable Ring shoping Store for Android & IOS with modern UI/UX",
-    image: "https://i.postimg.cc/850XFX6M/gold.png",
+    image: "/images/projects/nomo.png",
     icon: Code,
     color: "green",
     tags: ["Flutter", "Figma", "Payment"],
@@ -45,7 +45,7 @@ const projects = [
     title: "Mayfair Care Agency",
     category: "Care Agency",
     description: "we deliver elderly care, end of life care, and palliative care",
-    image: "https://i.postimg.cc/2yJxDm8m/Gemini-Generated-Image-a8zbv9a8zbv9a8zb.png",
+    image: "/images/projects/mayfair-care.png",
     icon: Hospital,
     color: "green",
     tags: ["Shopify", "React", "Payment"],
@@ -54,7 +54,7 @@ const projects = [
     title: "Lady Bosom",
     category: "Shoping",
     description: "We provide high-quality breast support products, body tape solutions.",
-    image: "https://i.postimg.cc/RZvBtzLw/Gemini-Generated-Image-hxhrfuhxhrfuhxhr.png",
+    image: "/images/projects/lady-bosom.png",
     icon: ShoppingCart,
     color: "green",
     tags: ["Shopify", "Payment"],
@@ -63,7 +63,7 @@ const projects = [
     title: "Q & P Furniture",
     category: "E-Commerce",
     description: "Modern Furniture Store",
-    image: "https://i.postimg.cc/NF5zmBN1/Gemini-Generated-Image-rvty0yrvty0yrvty.png",
+    image: "/images/projects/vivid-glow.png",
     icon: ShoppingCart,
     color: "green",
     tags: ["Shopify", "React", "Payment"],
@@ -72,7 +72,7 @@ const projects = [
     title: "Hungry Tails",
     category: "Pet Shop",
     description: "High-quality pet food, treats, and accessories for dogs and cats",
-    image: "https://i.postimg.cc/28FfFfNL/Gemini-Generated-Image-g1828zg1828zg182.png",
+    image: "/images/projects/glow-and-co.png",
     icon: ShoppingCart,
     color: "violet",
     tags: ["Shopify", "Payment"],
@@ -82,7 +82,7 @@ const projects = [
     title: "Patty Buns",
     category: "E-Commerce",
     description: "Modern Social Media Posts for Fast Food",
-    image: "https://i.postimg.cc/ncV3g8Q7/Patty-Buns.png",
+    image: "/images/projects/patty-buns.png",
     icon: Palette,
     color: "green",
     tags: ["Photoshop", "Canva", "Illustrator"],
@@ -92,7 +92,7 @@ const projects = [
     title: "Hungry Tails",
     category: "E-Commerce",
     description: "Modern Social Media Posts for Pet Foods",
-    image: "https://i.postimg.cc/4N4WqChz/Hungry-Tails-FB.png",
+    image: "/images/projects/hungry-tails.png",
     icon: Palette,
     color: "green",
     tags: ["Photoshop", "Canva", "Illustrator"],
@@ -242,6 +242,13 @@ const Work = () => {
                       src={project.image}
                       alt={project.title}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.onerror = null;
+                        const encodedTitle = encodeURIComponent(project.title);
+                        target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%231e293b"/><stop offset="100%" stop-color="%230f172a"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%2393c5fd" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">${encodedTitle}</text></svg>`;
+                      }}
                     />
                     
                     {/* Icon Badge - Smaller */}

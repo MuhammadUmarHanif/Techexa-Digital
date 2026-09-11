@@ -7,7 +7,7 @@ const teamMembers = [
   {
     name: "Hamza Kayani",
     role: "CEO",
-    image: "https://i.postimg.cc/LXRD14yK/Gemini-Generated-Image-rv7cpkrv7cpkrv7c.png",
+    image: "/images/team/daniyal-ahmad.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/hamza-kayani-pod-expert/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaEnvelope, url: "mailto:hamza@techexa.co.uk", label: "Email", color: "#000000" },
@@ -16,7 +16,7 @@ const teamMembers = [
    {
     name: "Umar Hanif",
     role: "Front-End Developer & Designer",
-    image: "https://i.postimg.cc/ry9hk4fw/Gemini-Generated-Image-8xpfcv8xpfcv8xpf.png",
+    image: "/images/team/hamza-kiyani.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/muhammad-umar-461b313a8/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaGithub, url: "https://github.com/bunnybunnyy", label: "GitHub", color: "#000000" },
@@ -26,7 +26,7 @@ const teamMembers = [
   {
     name: "Farooq Khan",
     role: "Full-Stack Developer",
-    image: "https://i.postimg.cc/xj48kJZS/Gemini-Generated-Image-jc8nezjc8nezjc8n.png",
+    image: "/images/team/muhammad-bilal.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/farooq-khan-1b881735b/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaGithub, url: "https://github.com/arooqkhan/", label: "GitHub", color: "#000000" },
@@ -37,7 +37,7 @@ const teamMembers = [
   {
     name: "Suzanne Maryam",
     role: "Project Manager",
-    image: "https://i.postimg.cc/rF13tffC/Suzanne.png",
+    image: "/images/team/suzanne.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/sozain-maryam-9b2a45297", label: "LinkedIn", color: "#000000" },
     //   { icon: FaEnvelope, url: "mailto:suzanne@techexa.co.uk", label: "Email", color: "#000000" },
@@ -46,7 +46,7 @@ const teamMembers = [
   {
     name: "Shahzain Baloch",
     role: "Flutter Developer",
-    image: "https://i.postimg.cc/cLJ3qyPW/Gemini-Generated-Image-v1svvv1svvv1svvv.png",
+    image: "/images/team/umar-khalid.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/shahzain-baloch-096893391", label: "LinkedIn", color: "#000000" },
     //   { icon: FaEnvelope, url: "mailto:shahzain@techexa.co.uk", label: "Email", color: "#000000" },
@@ -57,7 +57,7 @@ const teamMembers = [
   {
     name: "Haroon Sharif",
     role: "COO",
-    image: "https://i.postimg.cc/v8S11BKk/sir-haroon.png",
+    image: "/images/team/haroon-sharif.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
@@ -67,7 +67,7 @@ const teamMembers = [
   {
     name: "Mamoon Sharif",
     role: "CTO",
-    image: "https://i.postimg.cc/2SLSL7vN/mamoon-sir(1)(1)(1).png",
+    image: "/images/team/mamoon-sharif.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
@@ -77,7 +77,7 @@ const teamMembers = [
   {
     name: "Saman Khalid",
     role: "Software Developer",
-    image: "https://i.postimg.cc/L89pkkGq/mypicture(1)(1).png",
+    image: "/images/team/saman-khalid.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
@@ -88,15 +88,13 @@ const teamMembers = [
    {
     name: "Nabeel Alam",
     role: "UI/UX Designer",
-    image: "https://i.postimg.cc/KcQP0xW2/nebeeeel-sir.png",
+    image: "/images/team/nabeel-alam.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/umarkhalid0034/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
     //   { icon: FaEnvelope, url: "mailto:umarkhalid@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
-
-  
 ];
 
 const Team = () => {
@@ -118,6 +116,13 @@ const Team = () => {
         src={member.image}
         alt={member.name}
         className="w-full aspect-[4/5] object-cover"
+        loading="lazy"
+        onError={(e) => {
+          const target = e.currentTarget;
+          target.onerror = null;
+          const initials = member.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2);
+          target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%231e293b"/><stop offset="100%" stop-color="%230f172a"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><circle cx="200" cy="210" r="75" fill="%233b82f6" opacity="0.25"/><text x="50%" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="700" fill="%2393c5fd" text-anchor="middle">${initials}</text></svg>`;
+        }}
       />
       <div className="absolute bottom-0 left-0 right-0 p-2.5 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
         <div className="flex items-center justify-between gap-2">

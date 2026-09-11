@@ -60,25 +60,32 @@ const Hero = () => {
     }
 
     const ctx = gsap.context(() => {
-      gsap.timeline({ defaults: { ease: "power3.out" } })
-        .fromTo("[data-hero-badge]", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.6 })
-        .fromTo("[data-hero-title]", { autoAlpha: 0, y: 64 }, { autoAlpha: 1, y: 0, duration: 0.9 }, "-=0.2")
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      const badge = heroRef.current?.querySelector("[data-hero-badge]");
+      if (badge) {
+        tl.fromTo(badge, { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.6 });
+      }
+
+      tl.fromTo("[data-hero-title]", { autoAlpha: 0, y: 64 }, { autoAlpha: 1, y: 0, duration: 0.9 }, badge ? "-=0.2" : 0)
         .fromTo("[data-hero-copy]", { autoAlpha: 0, y: 42 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.45")
         .fromTo("[data-hero-actions]", { autoAlpha: 0, y: 36 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.45")
         .fromTo("[data-hero-stats]", { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.4")
         .fromTo("[data-hero-marquee]", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.35");
 
       const floatingShapes = gsap.utils.toArray<HTMLElement>("[data-hero-orb]");
-      floatingShapes.forEach((shape, index) => {
-        gsap.to(shape, {
-          y: index % 2 === 0 ? -24 : 24,
-          x: index % 2 === 0 ? 12 : -12,
-          duration: 4 + index,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
+      if (floatingShapes.length > 0) {
+        floatingShapes.forEach((shape, index) => {
+          gsap.to(shape, {
+            y: index % 2 === 0 ? -24 : 24,
+            x: index % 2 === 0 ? 12 : -12,
+            duration: 4 + index,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
         });
-      });
+      }
     }, heroRef);
 
     return () => ctx.revert();
