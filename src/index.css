@@ -107,19 +107,17 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
+    font-family: 'Sora', sans-serif;
     letter-spacing: -0.01em;
   }
 
-  /* Fixed: Proper font family name and weights */
+  /* Headings use Sora font */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Clash Display', sans-serif;
-    font-weight: 300;
+    font-family: 'Sora', sans-serif;
     letter-spacing: -0.02em;
   }
 
-  p, span, a, li {
+  p, a, li {
     font-weight: 300;
   }
 

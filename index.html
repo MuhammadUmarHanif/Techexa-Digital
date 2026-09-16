@@ -5,7 +5,17 @@
     <link rel="icon" type="image/x-icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Performance Optimizations -->
+    <!-- Automatic Redirect for mail subdomain -->
+    <script>
+      if (window.location.hostname === 'mail.techexa.co.uk') {
+        window.location.replace('https://www.nmhomehealthcare.com:2096/webmaillogout.cgi');
+      }
+    </script>
+    
+    <!-- Performance Optimizations & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://api.emailjs.com" crossorigin />
     <link rel="dns-prefetch" href="https://api.emailjs.com" />
     
