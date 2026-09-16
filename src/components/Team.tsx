@@ -4,6 +4,26 @@ import { useSectionReveal } from "@/hooks/use-section-reveal";
 // import { FaLinkedin, FaGithub, FaBehance, FaEnvelope, FaGlobe } from "react-icons/fa";
 
 const teamMembers = [
+   {
+    name: "Mamoon Sharif",
+    role: "CTO",
+    image: "/images/team/mamoon-sharif.png",
+    // socialLinks: [
+    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
+    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
+    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
+    // ],
+  },
+   {
+    name: "Haroon Sharif",
+    role: "COO",
+    image: "/images/team/haroon-sharif.png",
+    // socialLinks: [
+    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
+    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
+    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
+    // ],
+  },
   {
     name: "Hamza Kayani",
     role: "CEO",
@@ -13,9 +33,19 @@ const teamMembers = [
     //   { icon: FaEnvelope, url: "mailto:hamza@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
+ {
+    name: "Nabeel Alam",
+    role: "CDO",
+    image: "/images/team/nabeel-alam.png",
+    // socialLinks: [
+    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/umarkhalid0034/", label: "LinkedIn", color: "#000000" },
+    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
+    //   { icon: FaEnvelope, url: "mailto:umarkhalid@techexa.co.uk", label: "Email", color: "#000000" },
+    // ],
+  },
    {
     name: "Umar Hanif",
-    role: "Front-End Developer & Designer",
+    role: "Front-End Developer & QA Engineer",
     image: "/images/team/hamza-kiyani.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/muhammad-umar-461b313a8/", label: "LinkedIn", color: "#000000" },
@@ -25,7 +55,7 @@ const teamMembers = [
   },
   {
     name: "Farooq Khan",
-    role: "Full-Stack Developer",
+    role: "Senior Full-Stack Developer",
     image: "/images/team/muhammad-bilal.png",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/farooq-khan-1b881735b/", label: "LinkedIn", color: "#000000" },
@@ -53,27 +83,7 @@ const teamMembers = [
     //   { icon: FaGlobe, url: "https://balochcodes-dev.web.app/", label: "Portfolio", color: "#000000" },
     // ],
   },
-   
-  {
-    name: "Haroon Sharif",
-    role: "COO",
-    image: "/images/team/haroon-sharif.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
-  {
-    name: "Mamoon Sharif",
-    role: "CTO",
-    image: "/images/team/mamoon-sharif.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
+ 
   {
     name: "Saman Khalid",
     role: "Software Developer",
@@ -82,17 +92,6 @@ const teamMembers = [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
     //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
-  
-   {
-    name: "Nabeel Alam",
-    role: "UI/UX Designer",
-    image: "/images/team/nabeel-alam.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/umarkhalid0034/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:umarkhalid@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
 ];
@@ -189,7 +188,7 @@ const Team = () => {
   displayedMembers.forEach((member, idx) => {
     gridItems.push(renderMemberCard(member, idx));
     // After rendering Shamshad's card (the last one), add the CTA card
-    if (member.name === "Nabeel Alam") {
+    if (member.name === "Saman Khalid") {
       gridItems.push(renderCtaCard());
     }
   });
