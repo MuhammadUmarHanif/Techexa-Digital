@@ -50,15 +50,7 @@ const projects = [
     color: "green",
     tags: ["Shopify", "React", "Payment"],
   },
-  {
-    title: "Lady Bosom",
-    category: "Shoping",
-    description: "We provide high-quality breast support products, body tape solutions.",
-    image: "/images/projects/lady-bosom.png",
-    icon: ShoppingCart,
-    color: "green",
-    tags: ["Shopify", "Payment"],
-  },
+  
   {
     title: "Q & P Furniture",
     category: "E-Commerce",
@@ -75,6 +67,15 @@ const projects = [
     image: "/images/projects/glow-and-co.png",
     icon: ShoppingCart,
     color: "violet",
+    tags: ["Shopify", "Payment"],
+  },
+  {
+    title: "Lady Bosom",
+    category: "Shoping",
+    description: "We provide high-quality breast support products, body tape solutions.",
+    image: "/images/projects/lady-bosom.png",
+    icon: ShoppingCart,
+    color: "green",
     tags: ["Shopify", "Payment"],
   },
   

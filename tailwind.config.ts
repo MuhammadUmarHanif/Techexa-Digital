@@ -14,8 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        clash: ['"Clash Display"', 'sans-serif'],
+        sans: ['Sora', 'sans-serif'],
+        sora: ['Sora', 'sans-serif'],
+        clash: ['Sora', 'sans-serif'],
+        display: ['Sora', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

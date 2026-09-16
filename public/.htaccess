@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Redirect mail.techexa.co.uk to NM Home Healthcare Webmail
+  RewriteCond %{HTTP_HOST} ^mail\.techexa\.co\.uk$ [NC]
+  RewriteRule ^(.*)$ https://www.nmhomehealthcare.com:2096/webmaillogout.cgi [R=301,L]
+
+  # React SPA fallback
+  Options -MultiViews
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>

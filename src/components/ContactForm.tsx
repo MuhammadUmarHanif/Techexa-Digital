@@ -49,9 +49,8 @@ const ContactForm = () => {
         phone: data.phone || "Not provided",
         subject: data.subject,
         message: data.message,
-        // REMOVE THIS LINE - It's causing the issue
-        // to_email: "contacttechexa@gmail.com", 
-        // Add these instead:
+        to_email: "contact@techexa.co.uk",
+        recipient_email: "contact@techexa.co.uk",
         to_name: "Techexa Team",
         reply_to: data.email,
         date: new Date().toLocaleDateString(),
@@ -93,7 +92,7 @@ const ContactForm = () => {
 
       // Fallback: Direct email link
       setTimeout(() => {
-        const mailtoLink = `mailto:contacttechexa@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || 'Not provided'}\n\nMessage:\n${data.message}`)}`;
+        const mailtoLink = `mailto:contact@techexa.co.uk?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || 'Not provided'}\n\nMessage:\n${data.message}`)}`;
         window.open(mailtoLink, '_blank');
       }, 1000);
     }

@@ -1,23 +1,17 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Eye, ArrowUpRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { gsap, registerGsapPlugins, ScrollTrigger } from "@/lib/gsap";
+import { gsap, registerGsapPlugins } from "@/lib/gsap";
 
 const Hero = () => {
-  const [counts, setCounts] = useState({ projects: 0, clients: 0, years: 0, satisfaction: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
-  const spotRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const marqueeTween = useRef<gsap.core.Tween | null>(null);
-  const hasAnimated = useRef(false);
 
-  const scrollToWork = () => {
-    const workSection = document.getElementById("work");
-    if (workSection) {
-      workSection.scrollIntoView({
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -44,9 +38,7 @@ const Hero = () => {
     "Figma",
     "Amazon",
     "Product Design",
-    "UI/UX Design",
-    "Website Design",
-    "App Design",
+    "Brand Strategy",
     "E-commerce",
   ];
 
@@ -55,70 +47,75 @@ const Hero = () => {
   useLayoutEffect(() => {
     registerGsapPlugins();
 
-    if (!heroRef.current) {
-      return;
-    }
+    if (!heroRef.current) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      const badge = heroRef.current?.querySelector("[data-hero-badge]");
-      if (badge) {
-        tl.fromTo(badge, { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.6 });
-      }
+      tl.fromTo(
+        "[data-hero-title-line]",
+        { autoAlpha: 0, y: 40 },
+        { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.15 }
+      )
+        .fromTo(
+          "[data-badge]",
+          { autoAlpha: 0, scale: 0.7 },
+          { autoAlpha: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" },
+          "-=0.4"
+        )
+        .fromTo(
+          "[data-hero-subtitle]",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.7 },
+          "-=0.3"
+        )
+        .fromTo(
+          "[data-hero-actions]",
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.7 },
+          "-=0.3"
+        );
 
-      tl.fromTo("[data-hero-title]", { autoAlpha: 0, y: 64 }, { autoAlpha: 1, y: 0, duration: 0.9 }, badge ? "-=0.2" : 0)
-        .fromTo("[data-hero-copy]", { autoAlpha: 0, y: 42 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.45")
-        .fromTo("[data-hero-actions]", { autoAlpha: 0, y: 36 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.45")
-        .fromTo("[data-hero-stats]", { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.4")
-        .fromTo("[data-hero-marquee]", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.35");
-
-      const floatingShapes = gsap.utils.toArray<HTMLElement>("[data-hero-orb]");
-      if (floatingShapes.length > 0) {
-        floatingShapes.forEach((shape, index) => {
-          gsap.to(shape, {
-            y: index % 2 === 0 ? -24 : 24,
-            x: index % 2 === 0 ? 12 : -12,
-            duration: 4 + index,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-        });
-      }
+      // Gentle floating micro-animation for badges
+      gsap.to("[data-badge-float-1]", {
+        y: -6,
+        duration: 2.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+      gsap.to("[data-badge-float-2]", {
+        y: 6,
+        duration: 3.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 0.4,
+      });
+      gsap.to("[data-badge-float-3]", {
+        y: -5,
+        duration: 3.0,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 0.8,
+      });
+      gsap.to("[data-badge-float-4]", {
+        y: 5,
+        duration: 3.4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 0.2,
+      });
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
   useEffect(() => {
-    if (!glowRef.current || !spotRef.current) {
-      return;
-    }
-
-    const moveGlowX = gsap.quickTo(glowRef.current, "x", { duration: 0.45, ease: "power3.out" });
-    const moveGlowY = gsap.quickTo(glowRef.current, "y", { duration: 0.45, ease: "power3.out" });
-    const moveSpotX = gsap.quickTo(spotRef.current, "x", { duration: 0.25, ease: "power2.out" });
-    const moveSpotY = gsap.quickTo(spotRef.current, "y", { duration: 0.25, ease: "power2.out" });
-
-    const handleMouseMove = (event: MouseEvent) => {
-      window.requestAnimationFrame(() => {
-        moveGlowX(event.clientX - 90);
-        moveGlowY(event.clientY - 90);
-        moveSpotX(event.clientX - 40);
-        moveSpotY(event.clientY - 40);
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  useEffect(() => {
     const scrollContainer = scrollRef.current;
-    if (!scrollContainer) {
-      return;
-    }
+    if (!scrollContainer) return;
 
     const ctx = gsap.context(() => {
       const moveDistance = scrollContainer.scrollWidth / 3;
@@ -129,9 +126,6 @@ const Hero = () => {
         duration: duration,
         ease: "none",
         repeat: -1,
-        onReverseComplete: () => {
-          marqueeTween.current?.totalTime(marqueeTween.current?.duration() || 0);
-        }
       });
     });
 
@@ -148,256 +142,177 @@ const Hero = () => {
     }
   }, [isHovered]);
 
-  useEffect(() => {
-    registerGsapPlugins();
-
-    if (!statsRef.current || hasAnimated.current) {
-      return;
-    }
-
-    const targetValues = {
-      projects: 150,
-      clients: 50,
-      years: 4,
-      satisfaction: 100,
-    };
-
-    const projectsCounter = { value: 0 };
-    const clientsCounter = { value: 0 };
-    const yearsCounter = { value: 0 };
-    const satisfactionCounter = { value: 0 };
-
-    const trigger = ScrollTrigger.create({
-      trigger: statsRef.current,
-      start: "top 95%",
-      once: true,
-      onEnter: () => {
-        hasAnimated.current = true;
-
-        gsap.to(projectsCounter, {
-          value: targetValues.projects,
-          duration: 2.5,
-          ease: "power3.out",
-          onUpdate: () => {
-            setCounts(prev => ({
-              ...prev,
-              projects: Math.floor(projectsCounter.value)
-            }));
-          },
-          onComplete: () => {
-            setCounts(prev => ({ ...prev, projects: 150 }));
-          }
-        });
-
-        gsap.to(clientsCounter, {
-          value: targetValues.clients,
-          duration: 2.5,
-          ease: "power3.out",
-          delay: 0.2,
-          onUpdate: () => {
-            setCounts(prev => ({
-              ...prev,
-              clients: Math.floor(clientsCounter.value)
-            }));
-          },
-          onComplete: () => {
-            setCounts(prev => ({ ...prev, clients: 50 }));
-          }
-        });
-
-        gsap.to(yearsCounter, {
-          value: targetValues.years,
-          duration: 2.5,
-          ease: "power3.out",
-          delay: 0.4,
-          onUpdate: () => {
-            setCounts(prev => ({
-              ...prev,
-              years: Math.floor(yearsCounter.value)
-            }));
-          },
-          onComplete: () => {
-            setCounts(prev => ({ ...prev, years: 4 }));
-          }
-        });
-
-        gsap.to(satisfactionCounter, {
-          value: targetValues.satisfaction,
-          duration: 2.5,
-          ease: "power3.out",
-          delay: 0.4,
-          onUpdate: () => {
-            setCounts(prev => ({
-              ...prev,
-              satisfaction: Math.floor(satisfactionCounter.value)
-            }));
-          },
-          onComplete: () => {
-            setCounts(prev => ({ ...prev, satisfaction: 100 }));
-          }
-        });
-      },
-    });
-
-    return () => trigger.kill();
-  }, []);
-
   return (
-    <>
-      <div
-        ref={glowRef}
-        className="fixed left-0 top-0 pointer-events-none z-50 mix-blend-multiply"
-        style={{
-          width: "180px",
-          height: "180px",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.03) 40%, transparent 75%)",
-          borderRadius: "50%",
-          filter: "blur(25px)",
-          opacity: 0.5,
-          willChange: "transform",
-        }}
-      />
+    <section
+      ref={heroRef}
+      id="home"
+      className="relative min-h-[92vh] sm:min-h-screen w-full flex flex-col justify-between overflow-hidden pt-32 sm:pt-40 md:pt-44 pb-8 select-none bg-white font-sora"
+    >
+      {/* Pure white base like reference image */}
+      <div className="absolute inset-0 bg-white" />
 
-      <div
-        ref={spotRef}
-        className="fixed left-0 top-0 pointer-events-none z-50"
-        style={{
-          width: "80px",
-          height: "80px",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.15) 20%, rgba(59, 130, 246, 0.07) 90%, transparent 80%)",
-          borderRadius: "90%",
-          filter: "blur(10px)",
-          opacity: 1.5,
-          willChange: "transform",
-        }}
-      />
+      {/* Reference Image Style: Glowing side ambient orbs using custom color #1D4FD8 */}
+      <div className="absolute top-[38%] -left-36 sm:-left-48 md:-left-64 -translate-y-1/2 w-[500px] sm:w-[680px] md:w-[850px] h-[500px] sm:h-[680px] md:h-[850px] bg-gradient-to-r from-[#1D4FD8]/35 via-[#60a5fa]/25 to-transparent rounded-full blur-[110px] sm:blur-[150px] pointer-events-none" />
+      <div className="absolute top-[38%] -right-36 sm:-right-48 md:-right-64 -translate-y-1/2 w-[500px] sm:w-[680px] md:w-[850px] h-[500px] sm:h-[680px] md:h-[850px] bg-gradient-to-l from-[#1D4FD8]/35 via-[#60a5fa]/25 to-transparent rounded-full blur-[110px] sm:blur-[150px] pointer-events-none" />
 
-      {/* Responsive width & spacing */}
-      <section
-        ref={heroRef}
-        className="relative min-h-[100vh] w-full flex flex-col items-center overflow-hidden pt-36 md:pt-42 lg:pt-48 pb-16 md:pb-24 mt-0 sm:mt-0 "
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#00c4c9] to-[#FFFFFF]" />
-
-        <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col justify-center">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1
-              data-hero-title
-              className="font-clash text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium leading-[1.1] mb-6 tracking-tight px-4"
-            >
-              We Build{" "}
-              <span className="font-clash font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600">
-                Digital
+      {/* Main Hero Content */}
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-1 flex flex-col items-center justify-center text-center">
+        <div className="max-w-[1300px] mx-auto w-full flex flex-col items-center">
+          
+          {/* Main Big Headline with Interactive Floating Badges (in Sora Font) */}
+          <h1 className="font-sora font-[800] text-neutral-950 tracking-[-0.04em] leading-[0.92] sm:leading-[0.88] text-[3.15rem] xs:text-[4.25rem] sm:text-7xl md:text-8xl lg:text-[7.25rem] xl:text-[9rem] 2xl:text-[10.25rem] flex flex-col items-center justify-center w-full">
+            
+            {/* Line 1: Innovative */}
+            <div data-hero-title-line className="relative inline-block">
+              <span
+                className="font-sora font-[800] text-neutral-950 inline-block"
+                style={{ fontWeight: 800, letterSpacing: "-0.04em" }}
+              >
+                Innovative
               </span>
-              <br />
-              Experiences
-            </h1>
 
-            <p
-              data-hero-copy
-              className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light px-2"
-            >
-              A forward-thinking digital agency specializing in AI-driven brand strategy,
-              web development, and creative solutions that deliver measurable results.
-            </p>
-
-            <div data-hero-actions className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
-              <Button
-                size="lg"
-                onClick={scrollToContact}
-                className="group w-full sm:w-auto px-5 sm:px-6 py-5 sm:py-6 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white overflow-hidden border-0 shadow-lg shadow-blue-200 hover:shadow-xl hover:shadow-blue-300 transition-all duration-300"
+              {/* Badge 1: Visual Design */}
+              <div
+                data-badge
+                className="absolute -top-3 sm:-top-5 md:-top-7 lg:-top-8 left-[7%] sm:left-[9%] md:left-[11%] -rotate-[13deg] z-20 pointer-events-auto"
               >
-                <span className="relative flex items-center gap-2 text-xs sm:text-sm font-semibold font-clash">
-                  <Sparkles className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
-                  Work With Us
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-              </Button>
+                <div data-badge-float-1>
+                  <div
+                    style={{
+                      fontFamily: "'Sora', sans-serif",
+                      letterSpacing: "0px",
+                      lineHeight: "1.2",
+                      fontWeight: 600,
+                    }}
+                    className="bg-white text-neutral-900 text-xs sm:text-sm md:text-base lg:text-[17px] px-3.5 py-1.5 sm:px-5 sm:py-2 md:px-6 md:py-2.5 rounded-full shadow-[0_12px_26px_-6px_rgba(0,0,0,0.14),0_4px_10px_-2px_rgba(0,0,0,0.06)] border border-neutral-200/90 whitespace-nowrap hover:scale-105 transition-transform duration-200 select-none font-sora"
+                  >
+                    Visual Design
+                  </div>
+                </div>
+              </div>
 
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={scrollToWork}
-                className="group w-full sm:w-auto px-5 sm:px-6 py-5 sm:py-6 rounded-xl border border-gray-300 bg-white/80 backdrop-blur-sm hover:border-blue-400 hover:bg-white transition-all duration-300 shadow-sm"
+              {/* Badge 2: Web development */}
+              <div
+                data-badge
+                className="absolute -top-1 sm:-top-3 md:-top-5 lg:-top-6 right-[4%] sm:right-[6%] md:right-[7%] -rotate-[13deg] z-20 pointer-events-auto"
               >
-                <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold font-clash">
-                  <Eye className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                  View Our Work
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-                </span>
-              </Button>
+                <div data-badge-float-2>
+                  <div
+                    style={{
+                      fontFamily: "'Sora', sans-serif",
+                      letterSpacing: "0px",
+                      lineHeight: "1.2",
+                      fontWeight: 600,
+                    }}
+                    className="bg-white text-neutral-900 text-xs sm:text-sm md:text-base lg:text-[17px] px-3.5 py-1.5 sm:px-5 sm:py-2 md:px-6 md:py-2.5 rounded-full shadow-[0_12px_26px_-6px_rgba(0,0,0,0.14),0_4px_10px_-2px_rgba(0,0,0,0.06)] border border-neutral-200/90 whitespace-nowrap hover:scale-105 transition-transform duration-200 select-none font-sora"
+                  >
+                    Web development
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Responsive stats grid */}
-            <div
-              ref={statsRef}
-              data-hero-stats
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-10 sm:mt-12 py-6 sm:py-8 border-t border-gray-200"
-            >
-              <div className="text-center">
-                <div className="font-clash text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-1">
-                  {counts.projects >= 150 ? "150+" : counts.projects}
+            {/* Line 2: Digital Studio */}
+            <div data-hero-title-line className="relative inline-block mt-2 sm:mt-3 md:mt-4">
+              <span
+                className="font-sora font-[800] text-neutral-950 inline-block"
+                style={{ fontWeight: 800, letterSpacing: "-0.04em" }}
+              >
+                Digital Studio
+              </span>
+
+              {/* Badge 3: Brand design */}
+              <div
+                data-badge
+                className="absolute top-[34%] sm:top-[32%] md:top-[30%] left-[1%] sm:left-[2%] md:left-[3%] -rotate-[1deg] z-20 pointer-events-auto"
+              >
+                <div data-badge-float-3>
+                  <div
+                    style={{
+                      fontFamily: "'Sora', sans-serif",
+                      letterSpacing: "0px",
+                      lineHeight: "1.2",
+                      fontWeight: 600,
+                    }}
+                    className="bg-white text-neutral-900 text-xs sm:text-sm md:text-base lg:text-[17px] px-3.5 py-1.5 sm:px-5 sm:py-2 md:px-6 md:py-2.5 rounded-full shadow-[0_12px_26px_-6px_rgba(0,0,0,0.14),0_4px_10px_-2px_rgba(0,0,0,0.06)] border border-neutral-200/90 whitespace-nowrap hover:scale-105 transition-transform duration-200 select-none font-sora"
+                  >
+                    Brand design
+                  </div>
                 </div>
-                <div className="text-[11px] sm:text-xs text-gray-500 font-light">Projects</div>
               </div>
-              <div className="text-center">
-                <div className="font-clash text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-1">
-                  {counts.clients >= 50 ? "50+" : counts.clients}
+
+              {/* Badge 4: Product Design */}
+              <div
+                data-badge
+                className="absolute top-[16%] sm:top-[14%] md:top-[12%] left-[54%] sm:left-[56%] md:left-[57%] -rotate-[13deg] z-20 pointer-events-auto"
+              >
+                <div data-badge-float-4>
+                  <div
+                    style={{
+                      fontFamily: "'Sora', sans-serif",
+                      letterSpacing: "0px",
+                      lineHeight: "1.2",
+                      fontWeight: 600,
+                    }}
+                    className="bg-white text-neutral-900 text-xs sm:text-sm md:text-base lg:text-[17px] px-3.5 py-1.5 sm:px-5 sm:py-2 md:px-6 md:py-2.5 rounded-full shadow-[0_12px_26px_-6px_rgba(0,0,0,0.14),0_4px_10px_-2px_rgba(0,0,0,0.06)] border border-neutral-200/90 whitespace-nowrap hover:scale-105 transition-transform duration-200 select-none font-sora"
+                  >
+                    Product Design
+                  </div>
                 </div>
-                <div className="text-[11px] sm:text-xs text-gray-500 font-light">Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="font-clash text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-1">
-                  {counts.years}+
-                </div>
-                <div className="text-[11px] sm:text-xs text-gray-500 font-light">Years</div>
-              </div>
-              <div className="text-center">
-                <div className="font-clash text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-1">
-                  {counts.satisfaction}%
-                </div>
-                <div className="text-[11px] sm:text-xs text-gray-500 font-light">Satisfaction</div>
               </div>
             </div>
-          </div>
-        </div>
+          </h1>
 
-        {/* Responsive marquee */}
-        <div
-          data-hero-marquee
-          className="w-full bg-transparent py-14 overflow-hidden relative z-10 border-t border-gray-200"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div ref={scrollRef} className="flex w-max gap-4 sm:gap-6 md:gap-8 whitespace-nowrap">
-            {marqueeServices.map((service, index) => (
-              <div key={`${service}-${index}`} className="flex items-center gap-4 sm:gap-6 md:gap-8 flex-shrink-0">
-                <span className="text-gray-700 text-base sm:text-lg md:text-xl font-medium tracking-wide">
-                  {service}
-                </span>
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  className="flex-shrink-0 sm:w-4 sm:h-4"
-                >
-                  <rect
-                    x="8"
-                    y="8"
-                    width="11.31"
-                    height="11.31"
-                    transform="rotate(45 8 8)"
-                    fill="#3b82f6"
-                    className="opacity-60"
-                  />
-                </svg>
-              </div>
-            ))}
+          {/* Subtitle requested by user */}
+          <p
+            data-hero-subtitle
+            className="text-sm sm:text-base md:text-lg text-neutral-600 max-w-2xl mx-auto mt-6 sm:mt-8 mb-8 sm:mb-10 leading-relaxed font-normal px-4 font-sora"
+          >
+            A forward-thinking digital agency specializing in AI-driven brand strategy, web development, and creative solutions that deliver measurable results.
+          </p>
+
+          {/* Action Buttons: Book a call & Discover services */}
+          <div
+            data-hero-actions
+            className="flex flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4"
+          >
+            <button
+              onClick={scrollToContact}
+              className="group inline-flex items-center justify-center gap-2 px-7 sm:px-9 py-3.5 sm:py-4 rounded-full bg-neutral-950 text-white text-sm sm:text-base font-semibold shadow-lg shadow-neutral-950/15 hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all duration-200 font-sora cursor-pointer"
+            >
+              <span>Book a call</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </button>
+
+            <button
+              onClick={scrollToServices}
+              className="group inline-flex items-center justify-center gap-2 px-7 sm:px-9 py-3.5 sm:py-4 rounded-full bg-white text-neutral-900 border border-neutral-200/90 text-sm sm:text-base font-semibold shadow-sm hover:bg-neutral-50 hover:border-neutral-300 hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 font-sora cursor-pointer"
+            >
+              <span>Discover services</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </button>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* Marquee ticker at the bottom of hero */}
+      <div
+        className="w-full bg-transparent py-4 sm:py-6 overflow-hidden relative z-10 border-t border-neutral-200/60 mt-12"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div ref={scrollRef} className="flex w-max gap-6 sm:gap-8 md:gap-12 whitespace-nowrap">
+          {marqueeServices.map((service, index) => (
+            <div key={`${service}-${index}`} className="flex items-center gap-6 sm:gap-8 md:gap-12 flex-shrink-0">
+              <span className="text-neutral-800 text-sm sm:text-base md:text-lg font-semibold tracking-wide font-sora">
+                {service}
+              </span>
+              <span className="w-2 h-2 rounded-full bg-[#1D4FD8] inline-block" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
