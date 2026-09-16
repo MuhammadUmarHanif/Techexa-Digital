@@ -4,7 +4,7 @@ import { useSectionReveal } from "@/hooks/use-section-reveal";
 // import { FaLinkedin, FaGithub, FaBehance, FaEnvelope, FaGlobe } from "react-icons/fa";
 
 const teamMembers = [
-<<<<<<< HEAD
+
    {
     name: "Mamoon Sharif",
     role: "CTO",
@@ -44,55 +44,9 @@ const teamMembers = [
     //   { icon: FaEnvelope, url: "mailto:umarkhalid@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
-   {
-    name: "Umar Hanif",
-    role: "Front-End Developer & QA Engineer",
-    image: "/images/team/hamza-kiyani.png",
-=======
-   {
-    name: "Mamoon Sharif",
-    role: "CTO",
-    image: "/images/team/mamoon-sharif.png",
->>>>>>> fd66182b41e7cd728b4fdda001d9473d5eb5fdfe
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
+  
+
   {
-<<<<<<< HEAD
-=======
-    name: "Haroon Sharif",
-    role: "COO",
-    image: "/images/team/haroon-sharif.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
-  {
-    name: "Hamza Kayani",
-    role: "CEO",
-    image: "/images/team/daniyal-ahmad.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/hamza-kayani-pod-expert/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:hamza@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
-  {
-    name: "Nabeel Alam",
-    role: "CDO",
-    image: "/images/team/nabeel-alam.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/umarkhalid0034/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:umarkhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
-  {
->>>>>>> fd66182b41e7cd728b4fdda001d9473d5eb5fdfe
     name: "Farooq Khan",
     role: "Senior Full-Stack Developer",
     image: "/images/team/muhammad-bilal.png",
@@ -102,17 +56,7 @@ const teamMembers = [
     //   { icon: FaEnvelope, url: "mailto:farooqkhan@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
-<<<<<<< HEAD
  
-  {
-    name: "Suzanne Maryam",
-    role: "Project Manager",
-    image: "/images/team/suzanne.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/sozain-maryam-9b2a45297", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:suzanne@techexa.co.uk", label: "Email", color: "#000000" },
-=======
-
    {
     name: "Umar Hanif",
     role: "Front-End Developer & SQA Engineer",
@@ -121,67 +65,39 @@ const teamMembers = [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/muhammad-umar-461b313a8/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaGithub, url: "https://github.com/bunnybunnyy", label: "GitHub", color: "#000000" },
     //   { icon: FaGlobe, url: "https://muhammad-umar-developer.vercel.app/", label: "Portfolio", color: "#000000" },
->>>>>>> fd66182b41e7cd728b4fdda001d9473d5eb5fdfe
+
     // ],
   },
   {
     name: "Shahzain Baloch",
-<<<<<<< HEAD
-    role: "Flutter Developer",
-=======
     role: "Senior Flutter Developer",
->>>>>>> fd66182b41e7cd728b4fdda001d9473d5eb5fdfe
     image: "/images/team/umar-khalid.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/shahzain-baloch-096893391", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:shahzain@techexa.co.uk", label: "Email", color: "#000000" },
-    //   { icon: FaGlobe, url: "https://balochcodes-dev.web.app/", label: "Portfolio", color: "#000000" },
-    // ],
   },
-<<<<<<< HEAD
- 
-=======
->>>>>>> fd66182b41e7cd728b4fdda001d9473d5eb5fdfe
   {
     name: "Saman Khalid",
     role: "Software Developer",
     image: "/images/team/saman-khalid.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
   },
-<<<<<<< HEAD
-=======
   {
     name: "Syed Yawar",
     role: "QA intern",
     image: "/images/team/suzanne.png",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/sozain-maryam-9b2a45297", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:suzanne@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
   },
-  
-   
->>>>>>> fd66182b41e7cd728b4fdda001d9473d5eb5fdfe
 ];
 
 const Team = () => {
-  const [showAll, setShowAll] = useState(false);
+  const [showAll] = useState(false);
   const sectionRef = useRef(null);
   const displayedMembers = showAll ? teamMembers : teamMembers;
 
   useSectionReveal(sectionRef, {}, [displayedMembers.length]);
 
   // Helper to render a team member card
-  const renderMemberCard = (member, index) => (
+  const renderMemberCard = (member: typeof teamMembers[0], index: number) => (
     <div
-      key={member.name}
+      key={`${member.name}-${index}`}
       data-reveal
       className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm will-change-transform"
-      
     >
       <img
         src={member.image}
@@ -255,21 +171,16 @@ const Team = () => {
   </div>
 );
 
-  // Build the grid items: all members, then after Saman Khalid add CTA card at the end
-  const gridItems = [];
+  // Build the grid items: all members, then add CTA card at the end
+  const gridItems: JSX.Element[] = [];
   displayedMembers.forEach((member, idx) => {
     gridItems.push(renderMemberCard(member, idx));
-<<<<<<< HEAD
-    // After rendering Shamshad's card (the last one), add the CTA card
-    if (member.name === "Saman Khalid") {
-=======
-    // After rendering Saman Khalid's card, add the CTA card
-    if (member.name === "Syed Yawar") {
->>>>>>> fd66182b41e7cd728b4fdda001d9473d5eb5fdfe
+
+    // After rendering Syed Yawar's card (or the last card), add the CTA card
+    if (member.name === "Syed Yawar" || idx === displayedMembers.length - 1) {
       gridItems.push(renderCtaCard());
     }
   });
-
   return (
     <section ref={sectionRef} id="team" className="py-16 md:py-24 relative overflow-hidden bg-white">
       {/* Decorative orbs */}
