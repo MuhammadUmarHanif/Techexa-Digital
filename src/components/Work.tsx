@@ -176,7 +176,7 @@ const Work = () => {
   };
 
   return (
-    <section ref={sectionRef} id="work" className="py-16 md:py-24 relative overflow-hidden bg-white">
+    <section ref={sectionRef} id="work" className="py-16 md:py-24 -mt-24 relative overflow-hidden bg-white">
       {/* Minimal Background - Reduced size */}
       <div data-parallax="60" className="absolute top-0 right-0 w-[300px] h-[300px] bg-primary/3 rounded-full blur-3xl" />
       <div data-parallax="45" className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-primary/3 rounded-full blur-3xl" />

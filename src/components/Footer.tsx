@@ -187,14 +187,14 @@ const Footer = () => {
             </div>
           </div>
         </div>
+{/* Bottom Giant Brand Wordmark (Hero Typography from reference image) */}
+<div className="w-full select-none pointer-events-none pt-12 border-t border-neutral-100 flex items-start justify-center overflow-hidden h-[9vw] sm:h-[10.5vw] md:h-[11.5vw]">
+  
+  <h2 className="font-sora font-[800] text-[14vw] sm:text-[15vw] md:text-[13vw] leading-[0.85] tracking-[-0.03em] text-center uppercase text-gradient translate-y-[1%]">
+    TECHEXA
+  </h2>
 
-        {/* Bottom Giant Brand Wordmark (Hero Typography from reference image) */}
-        <div className="w-full select-none pointer-events-none pt-6 pb-2 border-t border-neutral-100 flex items-center justify-center overflow-hidden">
-          <h2 className="font-sora font-[800] text-[10vw] sm:text-[11vw] md:text-[11.5vw] lg:text-[7.8rem] xl:text-[8.8rem] leading-none tracking-[-0.03em] text-center w-full uppercase text-gradient py-2">
-            TECHEXA
-          </h2>
-        </div>
-
+</div>
         {/* Copyright & Sub-links Bar */}
         <div className="pt-6 mt-2 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-medium">
           <p>© {currentYear} TECHEXA Digital Services Pvt, Ltd. All rights reserved.</p>

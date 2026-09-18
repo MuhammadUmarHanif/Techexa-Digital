@@ -158,14 +158,14 @@ const Hero = () => {
       {/* Main Hero Content */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-1 flex flex-col items-center justify-center text-center">
         <div className="max-w-[1300px] mx-auto w-full flex flex-col items-center">
-          
+
           {/* Main Big Headline with Interactive Floating Badges (in Sora Font) */}
           <h1 className="font-sora font-[800] text-neutral-950 tracking-[-0.04em] leading-[0.92] sm:leading-[0.88] text-[3.15rem] xs:text-[4.25rem] sm:text-7xl md:text-8xl lg:text-[7.25rem] xl:text-[9rem] 2xl:text-[10.25rem] flex flex-col items-center justify-center w-full">
-            
+
             {/* Line 1: Innovative */}
             <div data-hero-title-line className="relative inline-block">
               <span
-                className="font-sora font-[800] text-neutral-950 inline-block"
+                className="font-sora font-[800] text-neutral-950 inline-block text-gradient translate-y-[1%]"
                 style={{ fontWeight: 800, letterSpacing: "-0.04em" }}
               >
                 Innovative
@@ -215,7 +215,7 @@ const Hero = () => {
             {/* Line 2: Digital Studio */}
             <div data-hero-title-line className="relative inline-block mt-2 sm:mt-3 md:mt-4">
               <span
-                className="font-sora font-[800] text-neutral-950 inline-block"
+                className="font-sora font-[800] text-neutral-950 inline-block text-gradient translate-y-[1%]"
                 style={{ fontWeight: 800, letterSpacing: "-0.04em" }}
               >
                 Digital Studio
@@ -278,7 +278,7 @@ const Hero = () => {
           >
             <button
               onClick={scrollToContact}
-              className="group inline-flex items-center justify-center gap-2 px-7 sm:px-9 py-3.5 sm:py-4 rounded-full bg-neutral-950 text-white text-sm sm:text-base font-semibold shadow-lg shadow-neutral-950/15 hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all duration-200 font-sora cursor-pointer"
+              className="group inline-flex items-center justify-center gap-2 px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-white text-sm sm:text-base font-semibold shadow-lg shadow-neutral-950/15 bg-gradient-primary hover:scale-105 active:scale-95 transition-all duration-200 font-sora cursor-pointer"
             >
               <span>Book a call</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -293,10 +293,30 @@ const Hero = () => {
             </button>
           </div>
         </div>
+
+        {/* Hero showcase image below the CTA buttons — placed outside the 1300px wrapper so it can grow wider */}
+        <div
+          data-hero-image
+          className="relative w-full max-w-none mx-auto -mt-2 sm:-mt-3 md:-mt-4 px-1 sm:px-2"
+        >
+          <img
+            src="/images/dashboard/img.png"
+            alt="Product dashboard preview"
+            className="w-full h-auto"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+              WebkitMaskComposite: "source-in",
+            }}
+          />
+        </div>
       </div>
 
       {/* Marquee ticker at the bottom of hero */}
-      <div
+      {/* <div
         className="w-full bg-transparent py-4 sm:py-6 overflow-hidden relative z-10 border-t border-neutral-200/60 mt-12"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -311,7 +331,7 @@ const Hero = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

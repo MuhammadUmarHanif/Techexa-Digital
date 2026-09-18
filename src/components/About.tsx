@@ -124,9 +124,9 @@ const About = () => {
                 <div className="flex items-center gap-3 mb-3">
                   <div className="flex -space-x-2">
                     {[
-                      "/images/about/about-1.jpg",
+                      "/images/about/about-1.png",
                       "/images/about/about-2.png",
-                      "/images/about/about-3.jpg",
+                      "/images/about/about-3.png",
                       "/images/about/about-4.png"
                     ].map((src, i) => (
                       <img

@@ -4,10 +4,8 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 
 const Navigation = () => {
-  const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const lastScrollY = useRef(0);
   const navRef = useRef<HTMLElement>(null);
 
   const location = useLocation();
@@ -21,33 +19,12 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const current = window.scrollY;
-      setIsScrolled(current > 20);
-
-      if (current < 50) {
-        setIsVisible(true);
-      } else if (current > lastScrollY.current) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-
-      lastScrollY.current = current;
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (!navRef.current) return;
-
-    gsap.to(navRef.current, {
-      y: isVisible ? 0 : -100,
-      duration: 0.35,
-      ease: "power2.out",
-    });
-  }, [isVisible]);
 
   useLayoutEffect(() => {
     if (!navRef.current) return;
@@ -105,12 +82,12 @@ const Navigation = () => {
         {/* Right: Contact Button (same as reference image) */}
         <div className="hidden md:flex items-center">
           <button
-            onClick={() => scrollToSection("contact")}
-            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-950 text-white hover:bg-neutral-800 text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm font-sora cursor-pointer"
-          >
-            <span>Contact</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-          </button>
+  onClick={() => scrollToSection("contact")}
+  className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-primary text-white text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm font-sora cursor-pointer"
+>
+  <span>Contact</span>
+  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+</button>
         </div>
 
         {/* Mobile Menu Button */}

@@ -8,7 +8,7 @@ const teamMembers = [
    {
     name: "Mamoon Sharif",
     role: "CTO",
-    image: "/images/team/mamoon-sharif.png",
+    image: "/images/team/mamoon-sharif.webp",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
@@ -18,7 +18,7 @@ const teamMembers = [
    {
     name: "Haroon Sharif",
     role: "COO",
-    image: "/images/team/haroon-sharif.png",
+    image: "/images/team/haroon-sharif.webp",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
@@ -28,7 +28,7 @@ const teamMembers = [
   {
     name: "Hamza Kayani",
     role: "CEO",
-    image: "/images/team/daniyal-ahmad.png",
+    image: "/images/team/daniyal-ahmad.webp",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/hamza-kayani-pod-expert/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaEnvelope, url: "mailto:hamza@techexa.co.uk", label: "Email", color: "#000000" },
@@ -37,7 +37,7 @@ const teamMembers = [
  {
     name: "Nabeel Alam",
     role: "CDO",
-    image: "/images/team/nabeel-alam.png",
+    image: "/images/team/nabeel-alam.webp",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/umarkhalid0034/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
@@ -49,7 +49,7 @@ const teamMembers = [
   {
     name: "Farooq Khan",
     role: "Senior Full-Stack Developer",
-    image: "/images/team/muhammad-bilal.png",
+    image: "/images/team/muhammad-bilal.webp",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/farooq-khan-1b881735b/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaGithub, url: "https://github.com/arooqkhan/", label: "GitHub", color: "#000000" },
@@ -60,7 +60,7 @@ const teamMembers = [
    {
     name: "Umar Hanif",
     role: "Front-End Developer & SQA Engineer",
-    image: "/images/team/hamza-kiyani.png",
+    image: "/images/team/hamza-kiyani.webp",
     // socialLinks: [
     //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/muhammad-umar-461b313a8/", label: "LinkedIn", color: "#000000" },
     //   { icon: FaGithub, url: "https://github.com/bunnybunnyy", label: "GitHub", color: "#000000" },
@@ -71,17 +71,17 @@ const teamMembers = [
   {
     name: "Shahzain Baloch",
     role: "Senior Flutter Developer",
-    image: "/images/team/umar-khalid.png",
+    image: "/images/team/umar-khalid.webp",
   },
   {
     name: "Saman Khalid",
     role: "Software Developer",
-    image: "/images/team/saman-khalid.png",
+    image: "/images/team/saman-khalid.webp",
   },
   {
     name: "Syed Yawar",
     role: "QA intern",
-    image: "/images/team/suzanne.png",
+    image: "/images/team/suzanne.webp",
   },
 ];
 
@@ -141,35 +141,36 @@ const Team = () => {
     </div>
   );
 
-  // Render CTA card (to be placed after Shamshad)
+  // Render CTA card (to be placed after Syed Yawar)
   const renderCtaCard = () => (
-  <div
-    key="cta-card"
-    data-reveal
-    className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm group hover:shadow-md transition-shadow duration-300 will-change-transform"  
-  >
-    <div className="relative h-full min-h-[300px] sm:min-h-[350px] flex flex-col items-start justify-center p-6 text-left bg-gradient-to-br from-purple-50 via-white to-cyan-50">
+    <div
+      key="cta-card"
+      data-reveal
+      className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm group hover:shadow-md transition-shadow duration-300 will-change-transform col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col min-h-[300px]"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-cyan-50" />
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-cyan-500/5 to-transparent" />
-      <div className="relative z-10 space-y-4 w-full mt-8">
-        <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-700 to-cyan-700 bg-clip-text text-transparent">
+      
+      {/* Content wrapper - centered vertically and horizontally */}
+       <div className="relative z-10 flex flex-col justify-center items-start text-left h-full p-8 md:p-12 space-y-6">
+        <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-700 to-cyan-700 bg-clip-text text-transparent">
           Join Our Team
         </h3>
-        <p className="text-slate-600 text-sm max-w-xs">
+        <p className="text-slate-600 text-lg md:text-xl max-w-xl leading-relaxed">
           We're always looking for talented individuals to push boundaries.
         </p>
-         <div className="relative z-10 flex justify-center w-full pt-14 -ml-8">
-        <a
-          href="https://www.linkedin.com/company/techexa-digital-services-smc-private-limited/jobs/"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white text-sm font-semibold transition-all hover:shadow-lg hover:scale-105"
-        >
-          Explore Careers
-          <ArrowRight className="w-4 h-4" />
-        </a>
-      </div>
+        <div className="pt-4">
+          <a
+            href="https://www.linkedin.com/company/techexa-digital-services-smc-private-limited/jobs/"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white text-base md:text-lg font-semibold transition-all hover:shadow-xl hover:scale-105"
+          >
+            Explore Careers
+            <ArrowRight className="w-5 h-6" />
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 
   // Build the grid items: all members, then add CTA card at the end
   const gridItems: JSX.Element[] = [];
@@ -209,8 +210,8 @@ const Team = () => {
           </p>
         </div>
 
-       {/* Team Grid with integrated CTA card */}
-       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 [&>*:nth-last-child(2)]:lg:col-start-2 [&>*:nth-last-child(1)]:lg:col-start-3">
+             {/* Team Grid with integrated CTA card */}
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
          {gridItems}
         </div>
       </div>
