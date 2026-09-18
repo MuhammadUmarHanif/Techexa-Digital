@@ -53,6 +53,13 @@ const services = [
     gradient: "from-rose-500/10 to-orange-500/10",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
   },
+  {
+    icon: TrendingUp,
+    title: "ML / AI Solutions",
+    description: "Custom machine learning and AI models built around your data and goals. From predictive analytics to intelligent automation, we turn raw data into smart, actionable solutions that give your business a competitive edge..",
+    gradient: "from-rose-500/10 to-orange-500/10",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+  },
 ];
 
 const Services = () => {
