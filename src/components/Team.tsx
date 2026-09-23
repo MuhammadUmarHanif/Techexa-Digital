@@ -5,7 +5,7 @@ import { useSectionReveal } from "@/hooks/use-section-reveal";
 
 const teamMembers = [
 
-   {
+  {
     name: "Mamoon Sharif",
     role: "CTO",
     image: "/images/team/mamoon-sharif.webp",
@@ -15,7 +15,7 @@ const teamMembers = [
     //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
-   {
+  {
     name: "Haroon Sharif",
     role: "COO",
     image: "/images/team/haroon-sharif.webp",
@@ -34,7 +34,7 @@ const teamMembers = [
     //   { icon: FaEnvelope, url: "mailto:hamza@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
- {
+  {
     name: "Nabeel Alam",
     role: "CDO",
     image: "/images/team/nabeel-alam.webp",
@@ -44,7 +44,7 @@ const teamMembers = [
     //   { icon: FaEnvelope, url: "mailto:umarkhalid@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
-  
+
 
   {
     name: "Farooq Khan",
@@ -56,8 +56,8 @@ const teamMembers = [
     //   { icon: FaEnvelope, url: "mailto:farooqkhan@techexa.co.uk", label: "Email", color: "#000000" },
     // ],
   },
- 
-   {
+
+  {
     name: "Umar Hanif",
     role: "Front-End Developer & SQA Engineer",
     image: "/images/team/hamza-kiyani.webp",
@@ -97,12 +97,12 @@ const Team = () => {
     <div
       key={`${member.name}-${index}`}
       data-reveal
-      className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm will-change-transform"
+      className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm will-change-transform aspect-[4/5] w-full"
     >
       <img
         src={member.image}
         alt={member.name}
-        className="w-full aspect-[4/5] object-cover object-top"
+        className="w-full h-full object-cover object-top block"
         loading="lazy"
         onError={(e) => {
           const target = e.currentTarget;
@@ -111,31 +111,14 @@ const Team = () => {
           target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%231e293b"/><stop offset="100%" stop-color="%230f172a"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><circle cx="200" cy="210" r="75" fill="%233b82f6" opacity="0.25"/><text x="50%" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="700" fill="%2393c5fd" text-anchor="middle">${initials}</text></svg>`;
         }}
       />
-      <div className="absolute bottom-0 left-0 right-0 p-2.5 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-        <div className="flex items-center justify-between gap-2">
-          <div className="min-w-0 flex-1 ml-2">
-            <p className="font-clash text-2xl font-medium text-white truncate mb-1">
-              {member.name}
-            </p>
-            <p className="text-[14px] text-white/70 truncate mb-1.5">
-              {member.role}
-            </p>
-          </div>
-          {/* <div className="flex items-center gap-1 flex-shrink-0">
-            {member.socialLinks.map((social, idx) => (
-              <a
-                key={idx}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-7 h-7 rounded-md transition-all duration-200 hover:opacity-80 hover:scale-110"
-                style={{ backgroundColor: social.color }}
-                aria-label={social.label}
-              >
-                <social.icon className="w-3.5 h-3.5 text-white" />
-              </a>
-            ))}
-          </div> */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-5">
+        <div className="min-w-0">
+          <p className="font-clash text-2xl font-medium text-white truncate">
+            {member.name}
+          </p>
+          <p className="text-[14px] text-white/70 truncate mt-0.5">
+            {member.role}
+          </p>
         </div>
       </div>
     </div>
@@ -146,20 +129,20 @@ const Team = () => {
     <div
       key="cta-card"
       data-reveal
-      className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm group hover:shadow-md transition-shadow duration-300 will-change-transform col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col min-h-[300px]"
+      className="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm group hover:shadow-md transition-shadow duration-300 will-change-transform col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col h-full"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-cyan-50" />
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-cyan-500/5 to-transparent" />
       
       {/* Content wrapper - centered vertically and horizontally */}
-       <div className="relative z-10 flex flex-col justify-center items-start text-left h-full p-8 md:p-12 space-y-6">
-        <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-700 to-cyan-700 bg-clip-text text-transparent">
+      <div className="relative z-10 flex flex-col justify-center items-start text-left h-full p-6 sm:p-8 lg:p-10 space-y-4 md:space-y-5">
+        <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-700 to-cyan-700 bg-clip-text text-transparent">
           Join Our Team
         </h3>
-        <p className="text-slate-600 text-lg md:text-xl max-w-xl leading-relaxed">
+        <p className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed">
           We're always looking for talented individuals to push boundaries.
         </p>
-        <div className="pt-4">
+        <div className="pt-2">
           <a
             href="https://www.linkedin.com/company/techexa-digital-services-smc-private-limited/jobs/"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white text-base md:text-lg font-semibold transition-all hover:shadow-xl hover:scale-105"
@@ -210,9 +193,9 @@ const Team = () => {
           </p>
         </div>
 
-             {/* Team Grid with integrated CTA card */}
-       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-         {gridItems}
+        {/* Team Grid with integrated CTA card */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {gridItems}
         </div>
       </div>
     </section>
