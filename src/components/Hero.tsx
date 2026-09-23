@@ -156,7 +156,7 @@ const Hero = () => {
       <div className="absolute top-[38%] -right-36 sm:-right-48 md:-right-64 -translate-y-1/2 w-[500px] sm:w-[680px] md:w-[850px] h-[500px] sm:h-[680px] md:h-[850px] bg-gradient-to-l from-[#1D4FD8]/35 via-[#60a5fa]/25 to-transparent rounded-full blur-[110px] sm:blur-[150px] pointer-events-none" />
 
       {/* Main Hero Content */}
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-1 flex flex-col items-center justify-center text-center">
+      <div className="container max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="max-w-[1300px] mx-auto w-full flex flex-col items-center">
 
           {/* Main Big Headline with Interactive Floating Badges (in Sora Font) */}

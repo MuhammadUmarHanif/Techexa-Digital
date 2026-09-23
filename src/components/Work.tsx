@@ -176,12 +176,12 @@ const Work = () => {
   };
 
   return (
-    <section ref={sectionRef} id="work" className="py-16 md:py-24 relative overflow-hidden bg-white">
+    <section ref={sectionRef} id="work" className="pt-8 pb-8 md:pt-10 md:pb-10 relative overflow-hidden bg-white">
       {/* Minimal Background - Reduced size */}
       <div data-parallax="60" className="absolute top-0 right-0 w-[300px] h-[300px] bg-primary/3 rounded-full blur-3xl" />
       <div data-parallax="45" className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-primary/3 rounded-full blur-3xl" />
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-10 sm:px-14 lg:px-20 relative z-10">
         {/* Header - Reduced spacing */}
         <div data-reveal className="mb-12">
           <div className="flex items-start justify-between gap-4 mb-4">

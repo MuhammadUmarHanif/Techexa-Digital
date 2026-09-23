@@ -9,12 +9,12 @@ const Contact = () => {
   useSectionReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} id="contact" className="py-16 md:py-24 relative overflow-hidden  bg-white">
+    <section ref={sectionRef} id="contact" className="pt-8 pb-8 md:pt-10 md:pb-10 relative overflow-hidden  bg-white">
       {/* Minimal Background */}
       <div data-parallax="65" className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-3xl" />
       <div data-parallax="48" className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div data-reveal className="text-center mb-12">

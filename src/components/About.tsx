@@ -15,7 +15,7 @@ const About = () => {
   useSectionReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} id="about" className="py-16 md:py-24 relative overflow-hidden bg-white ">
+    <section ref={sectionRef} id="about" className="pt-8 pb-8 md:pt-10 md:pb-10 relative overflow-hidden bg-white ">
       {/* Minimal Background Elements */}
       <div data-parallax="60" className="absolute top-40 left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       <div data-parallax="48" className="absolute bottom-20 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />

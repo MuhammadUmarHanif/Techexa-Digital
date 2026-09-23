@@ -59,8 +59,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-white pt-20 pb-8 overflow-hidden font-sora border-t border-neutral-100">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <footer className="relative bg-white pt-8 pb-8 overflow-hidden font-sora border-t border-neutral-100">
+      <div className="max-w-7xl mx-auto px-10 sm:px-14 lg:px-20">
         
         {/* Top Brand Row (Same as reference image) */}
         <div className="mb-14">
