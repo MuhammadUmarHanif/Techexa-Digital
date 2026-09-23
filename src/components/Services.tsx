@@ -9,7 +9,7 @@ const services = [
     title: "SaaS Development",
     description: "We build scalable, cloud-based software tailored to your business — from architecture to deployment. Secure, subscription-ready, and built to grow with your users.",
     gradient: "from-purple-500/10 to-pink-500/10",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: Code,
@@ -23,42 +23,42 @@ const services = [
     title: "Quality Assurance (QA)",
     description: "Rigorous manual and automated testing to catch bugs before your users do. We ensure your product is stable, secure, and works flawlessly across every device.",
     gradient: "from-orange-500/10 to-red-500/10",
-    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: Zap,
     title: "UI/UX & Graphic Design",
     description: "Intuitive interfaces that delight users and enhance engagement. From wireframes to final pixel-perfect visuals, we craft designs that captivate.",
     gradient: "from-yellow-500/10 to-amber-500/10",
-    image: "https://images.unsplash.com/photo-1559028006-448665bd7c7f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: Globe,
     title: "App Development",
     description: "Native and cross-platform mobile apps designed for speed and simplicity. From concept to launch, we build apps your users will love to use.",
     gradient: "from-green-500/10 to-emerald-500/10",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: Code,
     title: "AI Automation & Integration",
     description: "Smarter workflows powered by AI. We integrate chatbots, automation tools, and machine learning to help your business save time and scale efficiently.",
     gradient: "from-indigo-500/10 to-violet-500/10",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: TrendingUp,
     title: "Digital Marketing",
     description: "Data-driven strategies that get your brand seen. From SEO to paid ads and social campaigns, we help you reach the right audience and grow measurably.",
     gradient: "from-rose-500/10 to-orange-500/10",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: TrendingUp,
     title: "ML / AI Solutions",
     description: "Custom machine learning and AI models built around your data and goals. From predictive analytics to intelligent automation, we turn raw data into smart, actionable solutions that give your business a competitive edge..",
     gradient: "from-rose-500/10 to-orange-500/10",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -79,16 +79,16 @@ const Services = () => {
   };
 
   return (
-    <section ref={sectionRef} id="services" className="relative bg-white py-16 md:py-24">
+    <section ref={sectionRef} id="services" className="relative bg-white pt-16 pb-8 md:pt-24 md:pb-10">
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div data-parallax="70" className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
         <div data-parallax="55" className="absolute bottom-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-8 sm:px-10 lg:px-16 relative z-10">
         {/* Header */}
-        <div data-reveal className="max-w-2xl mb-12 md:mb-16">
+        <div data-reveal className="max-w-2xl mb-12 md:mb-16 pl-4 sm:pl-6 lg:pl-8">
           <span className="text-primary font-normal text-xs tracking-wider uppercase mb-3 block font-light">
             Services
           </span>
@@ -105,7 +105,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="sticky bg-white rounded-3xl border border-border/60 p-6 md:p-8 shadow-xl shadow-slate-900/5 hover:border-primary/40 transition-all duration-300 group"
+              className="sticky bg-[hsl(175,55%,97%)] hover:bg-[hsl(175,50%,93%)] rounded-3xl border border-border/60 hover:border-primary/40 p-6 md:p-8 shadow-xl shadow-slate-900/5 transition-all duration-300 group"
               style={{
                 top: `${95 + index * 12}px`,
                 zIndex: index + 1,

@@ -183,13 +183,13 @@ const Team = () => {
     }
   });
   return (
-    <section ref={sectionRef} id="team" className="py-16 md:py-24 relative overflow-hidden bg-white">
+    <section ref={sectionRef} id="team" className="pt-8 pb-8 md:pt-10 md:pb-10 relative overflow-hidden bg-white">
       {/* Decorative orbs */}
       <div data-parallax="70" className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" />
       <div data-parallax="52" className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
       <div data-parallax="34" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-10 sm:px-14 lg:px-20">
         {/* Header */}
         <div data-reveal className="max-w-4xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
@@ -211,7 +211,7 @@ const Team = () => {
         </div>
 
              {/* Team Grid with integrated CTA card */}
-       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
          {gridItems}
         </div>
       </div>
