@@ -5,16 +5,16 @@ import { useSectionReveal } from "@/hooks/use-section-reveal";
 
 const teamMembers = [
 
-  {
-    name: "Mamoon Sharif",
-    role: "CTO",
-    image: "/images/team/mamoon-sharif.webp",
-    // socialLinks: [
-    //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
-    //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
-    //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
-    // ],
-  },
+  // {
+  //   name: "Mamoon Sharif",
+  //   role: "CTO",
+  //   image: "/images/team/mamoon-sharif.webp",
+  //   // socialLinks: [
+  //   //   { icon: FaLinkedin, url: "https://www.linkedin.com/in/saman-khalid-b5044b353/", label: "LinkedIn", color: "#000000" },
+  //   //   { icon: FaBehance, url: "https://www.behance.net/hamzakayani3/", label: "Behance", color: "#000000" },
+  //   //   { icon: FaEnvelope, url: "mailto:samankhalid@techexa.co.uk", label: "Email", color: "#000000" },
+  //   // ],
+  // },
   {
     name: "Haroon Sharif",
     role: "COO",
@@ -80,7 +80,7 @@ const teamMembers = [
   },
   {
     name: "Syed Yawar",
-    role: "QA intern",
+    role: "Quality Assurance",
     image: "/images/team/suzanne.webp",
   },
 ];
