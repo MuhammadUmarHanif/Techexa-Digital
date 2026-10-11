@@ -1,73 +1,84 @@
-# Welcome to your Lovable project
+# TECHEXA Digital Services
 
-## Project info
+**Building Digital Experiences That Drive Business Growth**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🌐 **Live Website:** https://www.techexa.co.uk/
 
-## How can I edit this code?
+## About
 
-There are several ways of editing your application.
+TECHEXA Digital Services is a digital agency focused on building modern digital experiences through web development, mobile applications, branding, UI/UX design, e-commerce solutions, and digital marketing.
 
-**Use Lovable**
+Our goal is to help businesses strengthen their online presence, improve user experiences, and turn innovative ideas into scalable digital solutions.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Services
 
-Changes made via Lovable will be committed automatically to this repo.
+* **Web & App Development** — Modern, responsive websites and web applications.
+* **Brand Strategy** — Brand identity and digital positioning.
+* **UI/UX & Graphic Design** — User-friendly interfaces and creative visual design.
+* **E-commerce Solutions** — Online stores and seamless shopping experiences.
+* **Digital Marketing** — Digital strategies to increase reach and engagement.
+* **Maintenance & Support** — Ongoing website maintenance and technical support.
+* **AI-Driven Solutions** — Modern digital experiences and AI-powered integrations.
 
-**Use your preferred IDE**
+## Featured Projects
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The website showcases a range of digital projects, including:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* **The Perfume World** — E-commerce experience.
+* **HRM System** — Human resource management platform.
+* **Web Spark Builder** — AI-powered website builder concept.
+* **NOMO** — Online shopping experience.
+* **Mayfair Care Agency** — Care services website.
+* **Lady Bosom** — E-commerce store.
 
-Follow these steps:
+Explore the website to discover more projects and digital solutions.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Technology
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+The technologies used vary by project and may include:
 
-# Step 3: Install the necessary dependencies.
-npm i
+* React.js
+* JavaScript
+* PHP and Laravel
+* MySQL
+* Shopify
+* Flutter
+* Figma
+* Payment gateway integrations
+* AI API integrations
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## Our Approach
 
-**Edit a file directly in GitHub**
+1. **Discover** — Understand the client's goals and requirements.
+2. **Plan** — Define the project scope and digital strategy.
+3. **Design** — Create intuitive interfaces and engaging experiences.
+4. **Develop** — Build responsive, functional, and scalable solutions.
+5. **Deliver** — Test, deploy, and support the final product.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Website Features
 
-**Use GitHub Codespaces**
+* Responsive and modern agency website.
+* Company introduction and service listings.
+* Featured portfolio and project showcases.
+* Team profiles and company information.
+* Contact form for project enquiries.
+* Dedicated sections for services and business enquiries.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Contact
 
-## What technologies are used for this project?
+Have a project in mind? Let's build something great together.
 
-This project is built with:
+* **Website:** https://www.techexa.co.uk/
+* **Email:** [contact@techexa.co.uk](mailto:contact@techexa.co.uk)
+* **Phone:** +44 7873 877971
+* **Location:** Birmingham, United Kingdom
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Connect
 
-## How can I deploy this project?
+Follow TECHEXA Digital Services on LinkedIn for company updates, project highlights, and digital insights.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+**Website:** https://www.techexa.co.uk/
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+*TECHEXA Digital Services — Crafting exceptional digital experiences that drive business growth and innovation.*
